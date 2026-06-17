@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Danton Makau | Teaching Tomorrow Through Technology</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+<style>
+:root{
+  --black:#050705;
+  --deep:#0b120c;
+  --jungle:#1b5e20;
+  --green:#2e7d32;
+  --mint:#7fcf8a;
+  --white:#ffffff;
+  --fog:#f3f5f1;
+  --grey:#9da79d;
+  --line:rgba(255,255,255,.13);
+  --body:'Space Grotesk',system-ui,sans-serif;
+  --display:'DM Serif Display',Georgia,serif;
+  --mono:'JetBrains Mono',monospace;
+  --max:1240px;
+  --nav:74px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--black);color:var(--white);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+.container{max-width:var(--max);margin:0 auto;padding:0 32px}
+.section{padding:120px 0;position:relative}
+.section-light{background:var(--fog);color:var(--black)}
+.section-dark{background:var(--black);color:var(--white)}
+.section-deep{background:var(--deep);color:var(--white)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mint);margin-bottom:18px}
+.h-section{font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,5vw,4.4rem);line-height:1.02;letter-spacing:-.03em}
+.section-header{margin-bottom:64px;max-width:880px}
+.section-header p{max-width:700px;color:var(--grey);font-size:15px;line-height:1.85;margin-top:18px}
+.section-light .section-header p{color:#506050}
+.green{color:var(--mint)}
+.rule{width:72px;height:2px;background:var(--jungle);margin:22px 0 0}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;height:var(--nav);background:rgba(5,7,5,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);z-index:1000}
+.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;max-width:var(--max);margin:0 auto;padding:0 32px}
+.nav-logo{display:flex;gap:12px;align-items:center}
+.logo-mark{width:42px;height:42px;border:1px solid rgba(127,207,138,.45);background:linear-gradient(135deg,var(--jungle),#071007);display:grid;place-items:center;font-family:var(--mono);font-weight:700;color:#fff}
+.logo-name{font-weight:700;font-size:14px;letter-spacing:.05em}
+.logo-tag{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{position:relative;font-size:12px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.72);transition:.25s var(--ease)}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:2px;background:var(--mint);transform:scaleX(0);transition:.25s var(--ease)}
+.nav-links a:hover,.nav-links a.active{color:var(--mint)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-cta{background:var(--jungle);color:#fff!important;padding:11px 18px;border:1px solid rgba(127,207,138,.35)}
+.nav-cta::after{display:none}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{width:24px;height:2px;background:#fff}
+.mobile-menu{display:none;position:fixed;top:var(--nav);left:0;right:0;background:var(--black);border-bottom:1px solid var(--line);padding:24px 32px;z-index:999;flex-direction:column;gap:16px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--line);padding:10px 0}
+
+/* HERO */
+#hero{min-height:100vh;padding-top:var(--nav);display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 75% 30%,rgba(46,125,50,.26),transparent 30%),linear-gradient(135deg,#020302,#0a120b 55%,#020302)}
+#hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 95%)}
+.hero-inner{max-width:var(--max);margin:0 auto;padding:86px 32px;display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;position:relative;z-index:2}
+.issue-label{display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(127,207,138,.35);padding:8px 12px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mint);margin-bottom:26px}
+.issue-label::before{content:"";width:28px;height:1px;background:var(--mint)}
+.hero-title{font-family:var(--display);font-size:clamp(4.2rem,10vw,9.4rem);line-height:.82;letter-spacing:-.075em;font-weight:400;text-transform:uppercase;margin-bottom:30px}
+.hero-title span{display:block;color:var(--mint);font-style:italic;text-transform:none;letter-spacing:-.05em}
+.hero-sub{max-width:650px;color:rgba(255,255,255,.72);font-size:17px;line-height:1.85;margin-bottom:32px}
+.hero-roles{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:38px}
+.hero-role{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.16);padding:7px 12px;color:rgba(255,255,255,.76);background:rgba(255,255,255,.03)}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;font-weight:700;font-size:13px;border:1px solid rgba(255,255,255,.18);transition:.25s var(--ease)}
+.btn-primary{background:var(--jungle);border-color:var(--jungle);color:#fff}
+.btn-outline{background:transparent;color:#fff}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary:hover{background:var(--green)}
+.btn-outline:hover{border-color:var(--mint);color:var(--mint)}
+.hero-photo{position:relative;isolation:isolate;animation:float 5s ease-in-out infinite}
+.hero-photo::before{content:"";position:absolute;inset:-18px 18px 18px -18px;border:1px solid rgba(127,207,138,.45);z-index:-1}
+.hero-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center;border:1px solid rgba(255,255,255,.16);filter:contrast(1.05) saturate(.9)}
+.hero-badge{position:absolute;bottom:-22px;left:-22px;background:var(--jungle);color:#fff;padding:20px 24px;min-width:190px}
+.hero-badge strong{display:block;font-family:var(--display);font-size:2.5rem;line-height:1;font-weight:400}
+.hero-badge span{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;margin-top:7px}
+
+/* STATS */
+.stats-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#071007}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-item{padding:34px 28px;border-right:1px solid var(--line)}
+.stat-item:last-child{border-right:0}
+.stat-num{font-family:var(--display);font-size:3.1rem;line-height:1;color:#fff}
+.stat-label{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--mint);margin-top:10px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}
+.about-photo{position:sticky;top:110px}
+.about-photo img{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid rgba(255,255,255,.15)}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.about-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mint);border:1px solid rgba(127,207,138,.32);padding:7px 10px}
+.about-content p{color:rgba(255,255,255,.73);line-height:1.85;margin-bottom:20px}
+.highlight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:36px}
+.highlight{border:1px solid var(--line);padding:22px;background:rgba(255,255,255,.025);transition:.25s var(--ease)}
+.highlight:hover{transform:translateY(-6px);border-color:rgba(127,207,138,.45);background:rgba(27,94,32,.12)}
+.highlight-code{font-family:var(--mono);font-size:11px;color:var(--mint);margin-bottom:12px}
+.highlight h4{font-size:14px;margin-bottom:5px}
+.highlight p{font-size:12px!important;margin:0!important;color:var(--grey)!important}
+
+/* EXPERIENCE */
+.timeline{position:relative;margin-top:60px}
+.timeline::before{content:"";position:absolute;top:0;bottom:0;left:0;width:1px;background:rgba(127,207,138,.32)}
+.exp{position:relative;padding:0 0 58px 52px}
+.exp::before{content:"";position:absolute;left:-7px;top:6px;width:14px;height:14px;background:var(--jungle);border:2px solid var(--mint)}
+.exp-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.exp-date,.exp-type{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mint)}
+.exp-type{border:1px solid rgba(127,207,138,.35);padding:3px 8px}
+.exp-role{font-family:var(--display);font-size:1.8rem;line-height:1.1}
+.exp-org{font-family:var(--mono);color:var(--grey);font-size:12px;margin:8px 0 16px}
+.exp-desc{max-width:760px;color:rgba(255,255,255,.7);font-size:14px;line-height:1.8}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.58);border:1px solid rgba(255,255,255,.12);padding:4px 8px}
+
+/* PROJECTS */
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.project{background:#fff;color:var(--black);padding:34px 30px;min-height:300px;transition:.25s var(--ease);border:1px solid rgba(0,0,0,.06)}
+.project:hover{background:var(--jungle);color:#fff;transform:translateY(-8px)}
+.project-num{font-family:var(--mono);color:var(--jungle);font-size:11px;margin-bottom:22px}
+.project:hover .project-num{color:var(--mint)}
+.project-title{font-family:var(--display);font-size:1.35rem;line-height:1.25;margin-bottom:12px}
+.project-desc{font-size:13px;color:#4d584d;line-height:1.75;margin-bottom:20px}
+.project:hover .project-desc{color:rgba(255,255,255,.82)}
+.project-cat{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(27,94,32,.35);padding:5px 8px}
+.project:hover .project-cat{border-color:rgba(255,255,255,.35)}
+
+/* PUBLICATIONS */
+.pub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pub{border:1px solid var(--line);background:#081008;overflow:hidden;transition:.25s var(--ease)}
+.pub:hover{transform:translateY(-8px);border-color:rgba(127,207,138,.5);box-shadow:0 25px 70px rgba(27,94,32,.25)}
+.pub-cover{min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px 24px;background:linear-gradient(135deg,rgba(27,94,32,.42),transparent),#101410;position:relative}
+.pub-cover::after{content:"";position:absolute;inset:16px;border:1px solid rgba(255,255,255,.12)}
+.pub-vol{font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--mint);text-transform:uppercase;margin-bottom:26px}
+.pub-title{font-family:var(--display);font-size:1.22rem;line-height:1.28;max-width:300px;z-index:1}
+.pub-author{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.62);margin-top:26px;z-index:1}
+.pub-body{padding:24px}
+.pub-body p{font-size:13px;color:rgba(255,255,255,.68);line-height:1.75;margin-bottom:18px}
+.pub-actions{display:flex;flex-wrap:wrap;gap:10px}
+.pub-actions .btn{font-size:11px;padding:10px 15px}
+
+/* CERTIFICATES */
+.certs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cert{background:#fff;color:var(--black);border:1px solid rgba(0,0,0,.08);padding:22px;min-height:172px;display:flex;gap:14px;transition:.25s var(--ease)}
+.cert:hover{transform:translateY(-6px);border-color:var(--jungle);box-shadow:4px 4px 0 var(--jungle)}
+.cert-logo{width:44px;height:44px;min-width:44px;display:grid;place-items:center;background:var(--black);color:var(--mint);font-family:var(--mono);font-size:12px;font-weight:800;border:1px solid rgba(27,94,32,.3)}
+.cert-name{font-size:14px;font-weight:700;line-height:1.35;margin-bottom:6px}
+.cert-issuer{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:#5c6b5c;text-transform:uppercase;margin-bottom:12px}
+.cert-link{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--jungle);border-bottom:1px solid currentColor}
+
+/* GALLERY */
+.gallery-masonry{columns:4 250px;column-gap:20px}
+.gallery-card{position:relative;break-inside:avoid;margin-bottom:20px;overflow:hidden;cursor:pointer;border:1px solid var(--line);background:#000}
+.gallery-card img{width:100%;transition:.5s var(--ease);filter:grayscale(15%) contrast(1.02)}
+.gallery-card:hover img{transform:scale(1.06);filter:grayscale(0) contrast(1.08)}
+.gallery-caption{position:absolute;inset:auto 0 0 0;padding:50px 20px 20px;background:linear-gradient(transparent,rgba(0,0,0,.92));opacity:0;transform:translateY(8px);transition:.35s var(--ease)}
+.gallery-card:hover .gallery-caption{opacity:1;transform:none}
+.gallery-caption strong{display:block;font-size:13px}
+.gallery-caption span{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mint)}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:3000;display:none;align-items:center;justify-content:center;padding:28px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:86vh;object-fit:contain}
+.lightbox-close{position:absolute;top:20px;right:26px;color:#fff;font-size:36px;cursor:pointer}
+
+/* BLOG */
+.blog-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:2px}
+.blog{background:#fff;color:var(--black);padding:38px 34px;transition:.25s var(--ease);min-height:280px}
+.blog:hover{background:var(--jungle);color:#fff;transform:translateY(-8px)}
+.blog-cat{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--jungle);border:1px solid rgba(27,94,32,.35);padding:5px 8px;margin-bottom:20px}
+.blog:hover .blog-cat{color:var(--mint);border-color:rgba(255,255,255,.35)}
+.blog-title{font-family:var(--display);font-size:1.65rem;line-height:1.18;margin-bottom:14px}
+.blog:first-child .blog-title{font-size:2.35rem}
+.blog-excerpt{color:#4e594e;font-size:13px;line-height:1.75;margin-bottom:20px}
+.blog:hover .blog-excerpt{color:rgba(255,255,255,.82)}
+.blog-date{font-family:var(--mono);font-size:10px;color:#6a746a}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px}
+.contact-desc{color:rgba(255,255,255,.72);line-height:1.85;margin-bottom:36px}
+.contact-links{display:flex;flex-direction:column;gap:15px;margin-bottom:36px}
+.contact-link{display:flex;gap:16px;align-items:center;border:1px solid var(--line);padding:16px;transition:.25s var(--ease);background:rgba(255,255,255,.02)}
+.contact-link:hover{transform:translateY(-5px);border-color:rgba(127,207,138,.45);background:rgba(27,94,32,.12)}
+.contact-icon{width:38px;height:38px;background:var(--jungle);display:grid;place-items:center}
+.contact-text{font-size:13px;font-weight:700}
+.contact-sub{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--grey);text-transform:uppercase}
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:8px}
+.form-label{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--mint);text-transform:uppercase}
+.form-input,.form-textarea{background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff;font-family:var(--body);padding:15px 16px;outline:none}
+.form-input:focus,.form-textarea:focus{border-color:rgba(127,207,138,.55)}
+.form-textarea{min-height:120px;resize:vertical}
+.form-submit{align-self:flex-start;background:var(--jungle);color:#fff;border:0;padding:16px 30px;font-weight:800;cursor:pointer}
+
+/* FOOTER */
+footer{background:#020302;color:var(--grey);border-top:1px solid var(--line);padding:38px 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.footer-copy,.footer-tagline{font-family:var(--mono);font-size:11px;letter-spacing:.08em}
+.footer-tagline{color:var(--mint);text-transform:uppercase}
+
+/* ANIMATION */
+.reveal{opacity:0;transform:translateY(38px) scale(.985);filter:blur(4px);transition:opacity .75s var(--ease),transform .75s var(--ease),filter .75s var(--ease)}
+.reveal.in{opacity:1;transform:none;filter:none}
+.hero-content>*{opacity:0;animation:heroIn .8s var(--ease) forwards}
+.hero-content>*:nth-child(1){animation-delay:.05s}
+.hero-content>*:nth-child(2){animation-delay:.16s}
+.hero-content>*:nth-child(3){animation-delay:.26s}
+.hero-content>*:nth-child(4){animation-delay:.36s}
+.hero-content>*:nth-child(5){animation-delay:.46s}
+@keyframes heroIn{from{opacity:0;transform:translateY(22px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-photo{max-width:430px}
+  .about-photo{position:static}
+  .project-grid,.pub-grid{grid-template-columns:repeat(2,1fr)}
+  .certs-grid{grid-template-columns:repeat(2,1fr)}
+  .blog-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:780px){
+  .section{padding:82px 0}
+  .container,.nav-inner,.hero-inner{padding-left:22px;padding-right:22px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-title{font-size:clamp(4rem,18vw,6rem)}
+  .project-grid,.pub-grid,.certs-grid{grid-template-columns:1fr}
+  .highlight-grid{grid-template-columns:1fr}
+  .gallery-masonry{columns:2 180px}
+  .stat-item:nth-child(2){border-right:0}
+}
+@media(max-width:520px){
+  .gallery-masonry{columns:1}
+  .hero-badge{left:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.hero-content>*{opacity:1;transform:none;filter:none;animation:none;transition:none}
+  .hero-photo{animation:none}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" onclick="closeMenu()">
+      <div class="logo-mark">DM</div>
+      <div>
+        <div class="logo-name">Danton Makau</div>
+        <div class="logo-tag">Teaching Tomorrow Through Technology</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#publications" onclick="closeMenu()">Publications</a>
+  <a href="#certifications" onclick="closeMenu()">Certifications</a>
+  <a href="#gallery" onclick="closeMenu()">Gallery</a>
+  <a href="#blog" onclick="closeMenu()">Blog</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="issue-label">The EdTech Issue · Kenya</div>
+      <h1 class="hero-title">Danton<br>Makau<span>Future-ready learning</span></h1>
+      <p class="hero-sub">Educational Technology Professional, STEM & Robotics Trainer, English Educator, and Youth Mentor building practical pathways into innovation for learners across Kenya.</p>
+      <div class="hero-roles">
+        <span class="hero-role">Robotics Facilitator</span>
+        <span class="hero-role">STEM Trainer</span>
+        <span class="hero-role">AI in Education</span>
+        <span class="hero-role">Youth Mentor</span>
+        <span class="hero-role">Public Speaker</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">Explore Impact</a>
+        <a href="#publications" class="btn btn-outline">Read Publications</a>
+        <a href="assets/cv/Danton_Makau_International_CV_2Page.pdf" target="_blank" class="btn btn-outline">Download CV</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="images/display.png" alt="Danton Makau speaking at a technology event">
+      <div class="hero-badge"><strong>1K+</strong><span>Learners Trained</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-wrap">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal"><div class="stat-num">1,000+</div><div class="stat-label">Learners Trained</div></div>
+      <div class="stat-item reveal"><div class="stat-num">20+</div><div class="stat-label">Schools Reached</div></div>
+      <div class="stat-item reveal"><div class="stat-num">3+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-item reveal"><div class="stat-num">5+</div><div class="stat-label">Hackathons</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section section-dark">
+  <div class="container about-grid">
+    <div class="about-photo reveal">
+      <img src="images/profile.png" alt="Danton Makau professional portrait">
+      <div class="about-tags">
+        <span class="about-tag">B.Ed Arts (IT)</span>
+        <span class="about-tag">Maseno University</span>
+        <span class="about-tag">Robotics</span>
+        <span class="about-tag">AI in Education</span>
+        <span class="about-tag">English & Literature</span>
+      </div>
+    </div>
+    <div class="about-content reveal">
+      <div class="eyebrow">Chapter 01 · The Educator</div>
+      <h2 class="h-section">Technology is most powerful when it creates <span class="green">confidence.</span></h2>
+      <div class="rule"></div>
+      <p>Danton Makau is an Educational Technology Professional based in Kenya, holding a Bachelor of Education (Arts) with Information Technology from Maseno University. He works at the intersection of pedagogy, innovation, communication, and youth development.</p>
+      <p>His work spans robotics training, coding bootcamps, STEM outreach, hackathon mentorship, AI-assisted lesson planning, English and Literature instruction, and public speaking.</p>
+      <p>Danton’s mission is to transform African classrooms into laboratories of innovation where every learner becomes a creator, problem-solver, and future-ready citizen.</p>
+      <div class="highlight-grid">
+        <div class="highlight"><div class="highlight-code">01 / Robotics</div><h4>VEX IQ & LEGO EV3</h4><p>Practical robotics facilitation and competition preparation.</p></div>
+        <div class="highlight"><div class="highlight-code">02 / Education</div><h4>English & Literature</h4><p>Strong classroom foundation in communication and pedagogy.</p></div>
+        <div class="highlight"><div class="highlight-code">03 / Innovation</div><h4>Hackathon Mentorship</h4><p>Guiding learners from ideas to prototypes and presentations.</p></div>
+        <div class="highlight"><div class="highlight-code">04 / Outreach</div><h4>STEM Access</h4><p>Supporting future-ready learning across different school contexts.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="section section-deep">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">Chapter 02 · The Journey</div>
+      <h2 class="h-section">Experience</h2>
+      <div class="rule"></div>
+      <p>Field experience across teaching, robotics, digital outreach, media, STEM training, and youth innovation.</p>
+    </div>
+    <div class="timeline">
+      <div class="exp reveal"><div class="exp-meta"><span class="exp-date">January 2026 – Present</span><span class="exp-type">EdTech / STEM</span></div><div class="exp-role">EdTech Support / STEM & Robotics Trainer</div><div class="exp-org">STEM Impact Center Kenya</div><p class="exp-desc">Design and implement STEM, coding, and robotics lesson plans. Train students and youth in VEX IQ, VEX GO, SPIKE, EV3 Mindstorms, and Arduino. Facilitate hackathons in collaboration with the U.S. Embassy and guide learners through technical problem-solving and innovation projects.</p><div class="tags"><span class="tag">VEX IQ</span><span class="tag">LEGO EV3</span><span class="tag">Hackathons</span><span class="tag">Coding</span></div></div>
+      <div class="exp reveal"><div class="exp-meta"><span class="exp-date">2024 – 2025</span><span class="exp-type">Teaching</span></div><div class="exp-role">Teacher of English & Literature</div><div class="exp-org">St. Luke’s Shanderema Secondary School</div><p class="exp-desc">Taught English and Literature in a senior school environment. Prepared lesson plans, ensured curriculum delivery, patroned the Drama Club, mentored students in public speaking and performance, and coordinated Journalism Club activities.</p><div class="tags"><span class="tag">English</span><span class="tag">Literature</span><span class="tag">Drama</span><span class="tag">Journalism</span></div></div>
+      <div class="exp reveal"><div class="exp-meta"><span class="exp-date">May 2023 – August 2023</span><span class="exp-type">Teaching Practice</span></div><div class="exp-role">English & Literature Teacher</div><div class="exp-org">ACK St. Stephen’s Mulwanda Secondary School</div><p class="exp-desc">Completed formal teaching practice in English and Literature, developing lesson plans, classroom management skills, instructional materials, and learner-centered teaching strategies.</p><div class="tags"><span class="tag">Lesson Planning</span><span class="tag">Classroom Management</span><span class="tag">Assessment</span></div></div>
+      <div class="exp reveal"><div class="exp-meta"><span class="exp-date">January 2023 – February 2024</span><span class="exp-type">Media</span></div><div class="exp-role">Radio Presenter</div><div class="exp-org">Maseno Radio</div><p class="exp-desc">Hosted educational and youth-focused radio programs, strengthening public speaking, media communication, content preparation, and audience engagement skills.</p><div class="tags"><span class="tag">Broadcasting</span><span class="tag">Public Speaking</span><span class="tag">Youth Engagement</span></div></div>
+      <div class="exp reveal"><div class="exp-meta"><span class="exp-date">October 2022 – January 2023</span><span class="exp-type">Digital Outreach</span></div><div class="exp-role">Digital Outreach Champion</div><div class="exp-org">USAID 4THE CHILD Initiative</div><p class="exp-desc">Supported COVID-19 awareness campaigns through digital communication materials, online engagement, public education, social media outreach, and community feedback reporting.</p><div class="tags"><span class="tag">USAID</span><span class="tag">Digital Outreach</span><span class="tag">Health Communication</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section section-light">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">Chapter 03 · The Work</div>
+      <h2 class="h-section">Projects & Initiatives</h2>
+      <div class="rule"></div>
+      <p>Programs and activities designed to ignite curiosity, build skills, and create opportunity.</p>
+    </div>
+    <div class="project-grid">
+      <div class="project reveal"><div class="project-num">01</div><h3 class="project-title">VEX IQ Robotics Training</h3><p class="project-desc">Introducing learners to engineering design, programming logic, teamwork, and competitive robotics.</p><span class="project-cat">Robotics</span></div>
+      <div class="project reveal"><div class="project-num">02</div><h3 class="project-title">LEGO EV3 Robotics</h3><p class="project-desc">Hands-on robotics sessions that develop computational thinking, creativity, and problem-solving.</p><span class="project-cat">STEM Education</span></div>
+      <div class="project reveal"><div class="project-num">03</div><h3 class="project-title">Girls in STEM</h3><p class="project-desc">Mentoring girls through robotics, coding, digital literacy, and confidence-building STEM activities.</p><span class="project-cat">Equity</span></div>
+      <div class="project reveal"><div class="project-num">04</div><h3 class="project-title">Coding Bootcamps</h3><p class="project-desc">Introductory coding programs covering logic, Python fundamentals, and project-based learning.</p><span class="project-cat">Coding</span></div>
+      <div class="project reveal"><div class="project-num">05</div><h3 class="project-title">Hackathon Mentorship</h3><p class="project-desc">Supporting young innovators from problem identification to prototype presentation.</p><span class="project-cat">Innovation</span></div>
+      <div class="project reveal"><div class="project-num">06</div><h3 class="project-title">STEM Outreach</h3><p class="project-desc">Helping schools and learners access STEM opportunities through clubs, mentorship, and training.</p><span class="project-cat">Outreach</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="publications" class="section section-dark">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">Chapter 04 · The Ideas</div>
+      <h2 class="h-section">Publications</h2>
+      <div class="rule"></div>
+      <p>Evidence-based reflections and research at the intersection of technology, pedagogy, and African educational contexts.</p>
+    </div>
+    <div class="pub-grid">
+      <article class="pub reveal"><div class="pub-cover"><div class="pub-vol">Vol. I · February 2026</div><div class="pub-title">Robotics in Modern Classrooms: Using LEGO EV3 to Develop 21st Century Skills</div><div class="pub-author">Danton Makau</div></div><div class="pub-body"><p>How LEGO EV3 robotics can foster computational thinking, collaboration, and engineering mindsets in Kenyan classrooms.</p><div class="pub-actions"><a href="assets/publications/Robotics_in_Modern_Classrooms_Danton_Makau_White_Paper.pdf" target="_blank" class="btn btn-outline">Preview PDF</a><a href="assets/publications/Robotics_in_Modern_Classrooms_Danton_Makau_White_Paper.pdf" download class="btn btn-primary">Download</a></div></div></article>
+      <article class="pub reveal"><div class="pub-cover"><div class="pub-vol">Vol. II · May 2026</div><div class="pub-title">Artificial Intelligence in Lesson Planning: Opportunities and Challenges for Educators</div><div class="pub-author">Danton Makau</div></div><div class="pub-body"><p>Exploring opportunities, risks, ethics, and classroom value of AI-assisted lesson planning.</p><div class="pub-actions"><a href="assets/publications/AI_in_Lesson_Planning_Danton_Makau_White_Paper_v2.pdf" target="_blank" class="btn btn-outline">Preview PDF</a><a href="assets/publications/AI_in_Lesson_Planning_Danton_Makau_White_Paper_v2.pdf" download class="btn btn-primary">Download</a></div></div></article>
+      <article class="pub reveal"><div class="pub-cover"><div class="pub-vol">Vol. III · June 2026</div><div class="pub-title">Reflections from the Field: Lessons Learned as a Robotics Trainer in Kenyan Schools</div><div class="pub-author">Danton Makau</div></div><div class="pub-body"><p>A field-based reflection on robotics facilitation, learner confidence, STEM inclusion, and practical training.</p><div class="pub-actions"><a href="assets/publications/Reflections_from_the_Field_Robotics_Trainer_Danton_Makau_White_Paper.pdf" target="_blank" class="btn btn-outline">Preview PDF</a><a href="assets/publications/Reflections_from_the_Field_Robotics_Trainer_Danton_Makau_White_Paper.pdf" download class="btn btn-primary">Download</a></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="certifications" class="section section-light">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">Chapter 05 · Credentials</div>
+      <h2 class="h-section">Certifications</h2>
+      <div class="rule"></div>
+      <p>Continuous professional development across child protection, leadership, AI, communication, and technology education.</p>
+    </div>
+    <div class="certs-grid">
+      <div class="cert reveal"><div class="cert-logo">UN</div><div><div class="cert-name">Child Protection in Humanitarian Action</div><div class="cert-issuer">UNICEF</div><a href="https://www.linkedin.com/in/danton-makau-b79402337/" target="_blank" class="cert-link">View on LinkedIn</a></div></div>
+      <div class="cert reveal"><div class="cert-logo">hp</div><div><div class="cert-name">Business Communication</div><div class="cert-issuer">HP LIFE</div><a href="https://www.life-global.org/certificate/7506dbd7-c349-4493-b637-c078e7664bd2" target="_blank" class="cert-link">Verify Certificate</a></div></div>
+      <div class="cert reveal"><div class="cert-logo">hp</div><div><div class="cert-name">Effective Leadership</div><div class="cert-issuer">HP LIFE</div><a href="https://www.life-global.org/certificate/cb207b85-8740-4659-8e36-b0c1a921c902" target="_blank" class="cert-link">Verify Certificate</a></div></div>
+      <div class="cert reveal"><div class="cert-logo">hp</div><div><div class="cert-name">Effective Presentations</div><div class="cert-issuer">HP LIFE</div><a href="https://www.life-global.org/certificate/60d966bf-7a1e-4683-806c-41b7c9db88ec" target="_blank" class="cert-link">Verify Certificate</a></div></div>
+      <div class="cert reveal"><div class="cert-logo">AI</div><div><div class="cert-name">Elements of AI</div><div class="cert-issuer">University of Helsinki</div></div></div>
+      <div class="cert reveal"><div class="cert-logo">Py</div><div><div class="cert-name">Python Programming</div><div class="cert-issuer">freeCodeCamp</div></div></div>
+      <div class="cert reveal"><div class="cert-logo">ST</div><div><div class="cert-name">Robotics Facilitation Training</div><div class="cert-issuer">STEM Impact Center</div></div></div>
+      <div class="cert reveal"><div class="cert-logo">ET</div><div><div class="cert-name">Educational Technology Integration</div><div class="cert-issuer">Professional Development</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="section section-dark">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">Chapter 06 · In The Field</div>
+      <h2 class="h-section">Gallery</h2>
+      <div class="rule"></div>
+      <p>Moments from robotics training, hackathon mentorship, STEM outreach, American Spaces events, and professional field practice.</p>
+    </div>
+    <div class="gallery-masonry">
+      <div class="gallery-card reveal"><img src="images/display.png" alt="Danton Makau speaking at a technology event"><div class="gallery-caption"><strong>Public Speaking</strong><span>Hackathon / STEM Event</span></div></div>
+      <div class="gallery-card reveal"><img src="images/profile.png" alt="Danton Makau professional portrait"><div class="gallery-caption"><strong>Professional Portrait</strong><span>EdTech / STEM Profile</span></div></div>
+      <div class="gallery-card reveal"><img src="images/hackathon-mentor-team-planning.jpg" alt="Danton Makau mentoring a hackathon team"><div class="gallery-caption"><strong>Hackathon Mentorship</strong><span>Guiding youth teams</span></div></div>
+      <div class="gallery-card reveal"><img src="images/vex-team-competition-table.jpg" alt="VEX robotics field"><div class="gallery-caption"><strong>VEX Robotics Competition</strong><span>STEM Impact Center Team</span></div></div>
+      <div class="gallery-card reveal"><img src="images/ev3-learner-training.jpg" alt="EV3 learner robotics training"><div class="gallery-caption"><strong>Learner Robotics Training</strong><span>Hands-on EV3 coaching</span></div></div>
+      <div class="gallery-card reveal"><img src="images/us-embassy-team-collaboration.jpg" alt="U.S. Embassy collaboration"><div class="gallery-caption"><strong>U.S. Embassy Collaboration</strong><span>Innovation working session</span></div></div>
+      <div class="gallery-card reveal"><img src="images/hackathon-group-discussion.jpg" alt="Hackathon group discussion"><div class="gallery-caption"><strong>Group Facilitation</strong><span>Project planning</span></div></div>
+      <div class="gallery-card reveal"><img src="images/professional-laptop-portrait.jpg" alt="Professional laptop portrait"><div class="gallery-caption"><strong>Professional Workspace</strong><span>Technology and education</span></div></div>
+      <div class="gallery-card reveal"><img src="images/hackathon-laptop-mentorship.jpg" alt="Hackathon laptop mentorship"><div class="gallery-caption"><strong>Mentorship Session</strong><span>Supporting young innovators</span></div></div>
+      <div class="gallery-card reveal"><img src="images/hackathon-team-planning.jpg" alt="Hackathon team planning"><div class="gallery-caption"><strong>Project Development</strong><span>Hackathon teamwork</span></div></div>
+      <div class="gallery-card reveal"><img src="images/hackathon-strategy-session.jpg" alt="Hackathon strategy session"><div class="gallery-caption"><strong>Strategy Session</strong><span>Problem solving</span></div></div>
+      <div class="gallery-card reveal"><img src="images/hackathon-team-photo.jpg" alt="Hackathon team photo"><div class="gallery-caption"><strong>Event Team Photo</strong><span>US-Kenya Hackathon</span></div></div>
+      <div class="gallery-card reveal"><img src="images/ev3-robot-prototype.jpg" alt="EV3 robot prototype"><div class="gallery-caption"><strong>EV3 Robot Prototype</strong><span>Build and testing</span></div></div>
+      <div class="gallery-card reveal"><img src="images/ev3-trainer-demo.jpg" alt="EV3 trainer demo"><div class="gallery-caption"><strong>Robot Demonstration</strong><span>Practical STEM training</span></div></div>
+      <div class="gallery-card reveal"><img src="images/american-spaces-portrait.jpg" alt="American Spaces portrait"><div class="gallery-caption"><strong>American Spaces</strong><span>Professional engagement</span></div></div>
+      <div class="gallery-card reveal"><img src="images/ev3-robot-design.jpg" alt="EV3 robot design"><div class="gallery-caption"><strong>Robot Design</strong><span>LEGO Mindstorms</span></div></div>
+      <div class="gallery-card reveal"><img src="images/robotics-code-screen.jpg" alt="EV3 programming screen"><div class="gallery-caption"><strong>Robot Programming</strong><span>Block-based coding</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="blog" class="section section-light">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">Chapter 07 · The Journal</div>
+      <h2 class="h-section">Blog</h2>
+      <div class="rule"></div>
+      <p>Reflections on EdTech, robotics education, digital tools, and the future of learning.</p>
+    </div>
+    <div class="blog-grid">
+      <a class="blog reveal" href="https://substack.com/@danton808/note/c-277119623?r=8lv0ed" target="_blank">
+        <span class="blog-cat">Featured · Robotics</span>
+        <h3 class="blog-title">Why Every Kenyan Classroom Needs a Robot</h3>
+        <p class="blog-excerpt">Robotics is more than technology. It develops creativity, teamwork, critical thinking, and problem-solving skills that learners need for the future.</p>
+        <div class="blog-date">Substack · July 2026</div>
+      </a>
+      <a class="blog reveal" href="https://substack.com/@danton808/note/c-277748982?r=8lv0ed" target="_blank">
+        <span class="blog-cat">Educational Technology</span>
+        <h3 class="blog-title">5 Digital Tools I Use Weekly as an Educator</h3>
+        <p class="blog-excerpt">A practical look at the digital tools that support my work as an educator, STEM trainer, writer, and educational technology professional.</p>
+        <div class="blog-date">Substack · July 2026</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section section-dark">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">Chapter 08 · Connect</div>
+      <h2 class="h-section">Let’s Build Something Future-Ready.</h2>
+      <div class="rule"></div>
+      <p>Open to collaboration with schools, STEM programs, NGOs, EdTech teams, innovation hubs, and youth empowerment initiatives.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="contact-desc">Whether you represent an international school, STEM program, development organization, EdTech company, or innovation hub — I’d love to hear from you.</p>
+        <div class="contact-links">
+          <a href="mailto:dantonmakau20@gmail.com" class="contact-link"><div class="contact-icon">✉</div><div><div class="contact-text">dantonmakau20@gmail.com</div><div class="contact-sub">Primary Email</div></div></a>
+          <a href="https://www.linkedin.com/in/danton-makau-b79402337" target="_blank" class="contact-link"><div class="contact-icon">in</div><div><div class="contact-text">LinkedIn Profile</div><div class="contact-sub">Connect Professionally</div></div></a>
+          <a href="assets/cv/Danton_Makau_International_CV_2Page.pdf" target="_blank" class="contact-link"><div class="contact-icon">CV</div><div><div class="contact-text">Download CV</div><div class="contact-sub">International CV · PDF</div></div></a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="contact-form">
+          <div class="form-group"><label class="form-label" for="name">Full Name</label><input id="name" class="form-input" placeholder="Your name"></div>
+          <div class="form-group"><label class="form-label" for="email">Email Address</label><input id="email" class="form-input" placeholder="your@email.com"></div>
+          <div class="form-group"><label class="form-label" for="org">Organization</label><input id="org" class="form-input" placeholder="School / NGO / Company"></div>
+          <div class="form-group"><label class="form-label" for="message">Message</label><textarea id="message" class="form-textarea" placeholder="Tell me about your project or opportunity…"></textarea></div>
+          <button class="form-submit" type="button">Send Message →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2026 Danton Makau. All rights reserved.</div>
+    <div class="footer-tagline">Teaching Tomorrow Through Technology</div>
+    <div class="footer-copy">Kenya · EdTech · STEM · Robotics · Innovation</div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img id="lightboxImg" src="" alt="Expanded gallery image">
+</div>
+
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){const m=document.getElementById('mobileMenu');if(m)m.classList.remove('open')}
+
+const reveals=document.querySelectorAll('.reveal');
+const ro=new IntersectionObserver((entries)=>{
+  entries.forEach((entry,i)=>{
+    if(entry.isIntersecting){
+      setTimeout(()=>entry.target.classList.add('in'),i*65);
+      ro.unobserve(entry.target);
+    }
+  });
+},{threshold:.1});
+reveals.forEach(el=>ro.observe(el));
+
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-links a');
+function updateNav(){
+  let cur='hero';
+  sections.forEach(s=>{if(scrollY>=s.offsetTop-130)cur=s.id});
+  navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur)});
+}
+addEventListener('scroll',updateNav);
+addEventListener('load',updateNav);
+
+document.querySelectorAll('.gallery-card img').forEach(img=>{
+  img.addEventListener('click',()=>{
+    document.getElementById('lightboxImg').src=img.src;
+    document.getElementById('lightbox').classList.add('open');
+  });
+});
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open')}
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLightbox()});
+
+const submit=document.querySelector('.form-submit');
+if(submit){
+  submit.addEventListener('click',function(){
+    const n=document.querySelector('#name').value.trim();
+    if(n){
+      this.textContent='Message Sent ✓';
+      this.style.background='#2e7d32';
+      setTimeout(()=>{this.textContent='Send Message →';this.style.background=''},3000);
+    }
+  });
+}
+</script>
+</body>
+</html>
