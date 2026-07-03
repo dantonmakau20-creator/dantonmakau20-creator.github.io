@@ -503,14 +503,59 @@ footer{background:#020302;color:var(--grey);border-top:1px solid var(--line);pad
           <a href="assets/cv/Danton_Makau_International_CV_2Page.pdf" target="_blank" class="contact-link"><div class="contact-icon">CV</div><div><div class="contact-text">Download CV</div><div class="contact-sub">International CV · PDF</div></div></a>
         </div>
       </div>
-      <div class="reveal">
-        <div class="contact-form">
-          <div class="form-group"><label class="form-label" for="name">Full Name</label><input id="name" class="form-input" placeholder="Your name"></div>
-          <div class="form-group"><label class="form-label" for="email">Email Address</label><input id="email" class="form-input" placeholder="your@email.com"></div>
-          <div class="form-group"><label class="form-label" for="org">Organization</label><input id="org" class="form-input" placeholder="School / NGO / Company"></div>
-          <div class="form-group"><label class="form-label" for="message">Message</label><textarea id="message" class="form-textarea" placeholder="Tell me about your project or opportunity…"></textarea></div>
-          <button class="form-submit" type="button">Send Message →</button>
-        </div>
+     <form
+    class="contact-form"
+    action="https://formspree.io/f/mnjklnjy"
+    method="POST">
+
+    <div class="form-group">
+        <label class="form-label" for="name">Full Name</label>
+        <input
+            id="name"
+            name="name"
+            type="text"
+            class="form-input"
+            placeholder="Your Full Name"
+            required>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="email">Email Address</label>
+        <input
+            id="email"
+            name="email"
+            type="email"
+            class="form-input"
+            placeholder="Your Email Address"
+            required>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="org">Organization</label>
+        <input
+            id="org"
+            name="organization"
+            type="text"
+            class="form-input"
+            placeholder="School, Company or Organization">
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="message">Message</label>
+        <textarea
+            id="message"
+            name="message"
+            class="form-textarea"
+            rows="6"
+            placeholder="Tell me about your project or collaboration..."
+            required></textarea>
+    </div>
+
+    <button class="form-submit" type="submit">
+        Send Message →
+    </button>
+
+</form>
       </div>
     </div>
   </div>
